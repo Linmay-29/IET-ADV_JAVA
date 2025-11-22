@@ -1,0 +1,15 @@
+package com.demo.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class TestPrepareStatment {
+	public static void main(String[] args) {
+		Connection cnnn = null;
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			String link = "mysql --host=192.168.10.117 --port=3306 --user=dac35 --password=welcome";
+			cnnn = DriverManager.getConnection(link,"dac35","welcome");
+		}
+	}
+}

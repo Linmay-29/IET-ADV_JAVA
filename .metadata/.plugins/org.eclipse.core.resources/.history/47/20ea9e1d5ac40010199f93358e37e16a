@@ -1,0 +1,21 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.demo.beans.Employee;
+
+public class EmpDaoImpl implements EmpDao {
+	static Connection conn;
+	static PreparedStatement insPst;
+	
+	static {
+		conn=HBUtils.getConnection();
+		insPst=conn.prepareStatement("insert into ");
+	}
+	@Override
+	public boolean addEmp(Employee emp){
+		return false;
+	}
+
+}

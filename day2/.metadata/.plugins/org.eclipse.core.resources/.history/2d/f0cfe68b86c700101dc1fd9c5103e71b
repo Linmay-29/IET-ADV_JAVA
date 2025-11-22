@@ -1,0 +1,27 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class DelServlet extends HttpServlet{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductService pservice = new ProductServiceImpl();
+		boolean status = pservice.delProductById(pid);
+		if(status) {
+			RequestDispatcher rd= req.getRequestDispatcher("showProduct");
+			rd.forward(req, res);
+		}
+	}
+}

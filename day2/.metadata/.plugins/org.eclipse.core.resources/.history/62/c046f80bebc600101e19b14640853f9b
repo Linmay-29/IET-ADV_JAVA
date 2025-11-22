@@ -1,0 +1,27 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.Products;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class ShowServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+		resp.setContentType("text.html");
+		PrintWriter out = resp.getWriter();
+		ProductService pService = new ProductServiceImpl();
+		List<Products> plist = pService.getProducts();
+		
+		if(plist!=null) {
+			out.println("<table border='1'><tr><th>Pid</th><th>Product Name</th><th>Qty</th><th>Price</th></tr>");
+			out.println()
+		}
+	}
+}

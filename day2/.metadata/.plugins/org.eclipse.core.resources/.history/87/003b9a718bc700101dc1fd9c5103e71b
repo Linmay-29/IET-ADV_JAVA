@@ -1,0 +1,25 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.Products;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class UpdateServlet extends HttpServlet{
+	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException {
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		ProductService pservice = new ProductServiceImpl();
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		String pname = req.getParameter("pname");
+		int qty = Integer.parseInt(req.getParameter("qty"));
+		double price = Double.parseDouble(req.getParameter("price"));
+		boolean status = pservice.updateProduct(new Products(pid,pname,qty,price));
+	}
+}

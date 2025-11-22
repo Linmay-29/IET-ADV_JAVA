@@ -1,0 +1,17 @@
+package com.demo.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class TestPrepareStatment {
+	public static void main(String[] args) {
+		Connection cnnn = null;
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			String link = "mysql --host=192.168.10.117 --port=3306 --user=dac35 --password=welcome";
+			cnnn = DriverManager.getConnection(link,"dac35","welcome");
+			PreparedStatement pst = cnnn.prepareStatement("Select * from myproduct");
+		}
+	}
+}

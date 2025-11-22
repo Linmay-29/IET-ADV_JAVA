@@ -1,0 +1,11 @@
+package com.demo.dao;
+
+public class ProductDaoImpl implements ProductDao {
+	static Connection cnn;
+	@Override
+	public boolean loginValidate(String uname, String pass) {
+		
+		return false;
+	}
+
+}

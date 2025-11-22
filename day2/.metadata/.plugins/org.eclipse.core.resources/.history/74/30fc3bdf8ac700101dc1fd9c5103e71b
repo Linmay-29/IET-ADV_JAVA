@@ -1,0 +1,101 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.demo.beans.Products;
+import com.demo.beans.User;
+
+public class ProductDaoImpl implements ProductDao {
+	static Connection cnn;
+	static PreparedStatement loginPst;
+	static PreparedStatement regPst;
+	static PreparedStatement selPst;
+	static PreparedStatement delPst;
+	static PreparedStatement getPst;
+	static {
+		try {
+			cnn = DButils.getConnection();
+			loginPst = cnn.prepareStatement("select * from user where uname = ? and pass=?");
+			regPst = cnn.prepareStatement("insert into user values(?,?,?)");
+			selPst = cnn.prepareStatement("select * from products");
+			delPst=cnn.prepareStatement("delete from products where pid = ?");
+			getPst=cnn.prepareStatement("select * from products where pid= ?");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public User loginValidate(String uname, String pass) {
+		try {
+			loginPst.setString(1, uname);
+			loginPst.setString(2, pass);
+			ResultSet rs = loginPst.executeQuery();
+			if(rs.next()) {
+				return new User(rs.getInt(1),rs.getString(2));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public boolean registerUser(User user) {
+		try {
+			regPst.setInt(1, user.getId());
+			regPst.setString(2, user.getName());
+			regPst.setString(3, user.getPass());
+			int result = regPst.executeUpdate();
+			return result>0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	@Override
+	public List<Products> getProducts() {
+		List<Products> plist = new ArrayList<>();
+		try {
+			ResultSet rs = selPst.executeQuery();
+			while(rs.next()) {
+				plist.add(new Products(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getDouble(4)));
+			}
+			return plist;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public boolean delById(int pid) {
+		try {
+			delPst.setInt(1, pid);
+			int n = delPst.executeUpdate();
+			return n>0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	@Override
+	public Products findProductById(int pid) {
+		try {
+			getPst.setInt(1, pid);
+			ResultSet st = getPst.executeQuery();
+			if(st.next()) {
+				return new Products(st.getInt(1),st.getString(2),st.getInt(3),st.getDouble(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

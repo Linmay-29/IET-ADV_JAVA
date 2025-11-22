@@ -1,0 +1,8 @@
+package com.demo.beans;
+
+public class Products {
+	private int pid;
+	private String pName;
+	private int qty;
+	private double price;
+}

@@ -1,0 +1,21 @@
+package com.demo.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class TestPrepareStatment {
+	public static void main(String[] args) {
+		Connection cnnn = null;
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			String link = "jdbc:mysql://192.168.10.117:3306/dac35?useSSL=false";
+			cnnn = DriverManager.getConnection(link,"dac35","welcome");
+			PreparedStatement pst = cnnn.prepareStatement("Select * from myproduct");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

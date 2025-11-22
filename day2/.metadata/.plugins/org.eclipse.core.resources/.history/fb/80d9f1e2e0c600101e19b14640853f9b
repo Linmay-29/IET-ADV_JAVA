@@ -1,0 +1,18 @@
+package com.demo.service;
+
+import com.demo.dao.ProductDao;
+import com.demo.dao.ProductDaoImpl;
+
+public class ProductServiceImpl implements ProductService {
+	private ProductDao pdao;
+	public ProductServiceImpl(){
+		pdao = new ProductDaoImpl();
+	}
+	@Override
+	public User loginValidate(String uname, String pass) {
+		return pdao.loginValidate(uname,pass);
+	}
+
+
+
+}

@@ -1,0 +1,49 @@
+package com.demo.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class TestPrepareStatment {
+	public static void main(String[] args) {
+		Connection cnnn = null;
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			String link = "jdbc:mysql://192.168.10.117:3306/dac35?useSSL=false";
+			cnnn = DriverManager.getConnection(link,"dac35","welcome");
+			PreparedStatement pst = cnnn.prepareStatement("Select * from myproduct");
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+		    	System.out.println("pid:" +rs.getInt("pid"));
+		    	System.out.println("pname:"+ rs.getString("pname"));
+		    	System.out.println("qty"+rs.getInt("qty"));
+		    	System.out.println("price:"+rs.getDouble("price"));
+		    	System.out.println("mfgdate:"+rs.getDate("mfgdate"));
+		    }
+			
+			PreparedStatement pst1 = cnnn.prepareStatement("insert into myproduct values(?,?,?,?,?)");
+			int pid = 001;
+			String pname = "KunalsKidneys";
+			int qty = 2;
+			double price = 20.00;
+			String date = "2001-09-12";
+			
+			pst1.setInt(1, pid);
+			pst1.setString(2, pname);
+			pst1.setInt(3, qty);
+			pst1.setDouble(4, price);
+			pst1.setString(5, date);
+			
+			int n = pst1.executeUpdate();
+			if(n>0) {
+				System.out.println("Inserted ");
+			}else {
+				System.out.println("Not inserted");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

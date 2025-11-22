@@ -1,0 +1,55 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.demo.beans.User;
+
+public class ProductDaoImpl implements ProductDao {
+	static Connection cnn;
+	static PreparedStatement loginPst;
+	static PreparedStatement regPst;
+	static {
+		try {
+			cnn = DButils.getConnection();
+			loginPst = cnn.prepareStatement("select * from user where uname = ? and pass=?");
+			regPst = cnn.prepareStatement("insert into user values(?,?,?)");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public User loginValidate(String uname, String pass) {
+		try {
+			loginPst.setString(1, uname);
+			loginPst.setString(2, pass);
+			ResultSet rs = loginPst.executeQuery();
+			if(rs.next()) {
+				return new User(rs.getInt(1),rs.getString(2));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public boolean registerUser(User user) {
+		try {
+			regPst.setInt(1, user.getId());
+			regPst.setString(2, user.getName());
+			regPst.setString(3, user.getPass());
+			int result = regPst.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

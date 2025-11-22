@@ -1,0 +1,31 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.Products;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class EditServlet extends HttpServlet{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException {
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductService pservice = new ProductServiceImpl();
+		Products p =  pservice.getProductByID(pid);
+		if(p!=null) {
+			out.println("<form action='updateProducts'>");
+			out.println("<input name='pid' id='pid' value='"+p.getPid()+"' readonly></input>");
+			out.println("<input name='pname' id='pname' value='"+p.getpName()+"'></input>");
+			out.println("<input name='qty' id='qty' value='"+p.getQty()+"'></input>");
+			out.println("<input name='price' id='price' value='"+p.getPrice()+"'></input>");
+			out.println("<button type='submit'>Update</button>");
+			out.println("</form>");
+		}
+	}
+}

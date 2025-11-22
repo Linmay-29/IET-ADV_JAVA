@@ -1,0 +1,11 @@
+package com.demo.dao;
+
+import com.demo.beans.User;
+
+public interface ProductDao {
+
+	User loginValidate(String uname, String pass);
+
+	boolean registerUser(User user);
+
+}

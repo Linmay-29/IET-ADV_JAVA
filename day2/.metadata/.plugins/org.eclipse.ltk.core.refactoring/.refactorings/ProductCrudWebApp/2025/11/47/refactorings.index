@@ -1,0 +1,11 @@
+1763729665050	Move 'login.html' to 'webapp'
+1763730724603	Rename type 'LoginValidation'
+1763730973097	Delete element
+1763731012894	Delete element
+1763731206222	Rename type 'LoginService'
+1763731220996	Rename type 'LoginServiceImpl'
+1763731240665	Rename type 'LoginDao'
+1763731253370	Rename type 'LoginDaoImpl'
+1763732639122	Delete element
+1763804350227	Rename type 'EditProduct'
+1763806600049	Delete element

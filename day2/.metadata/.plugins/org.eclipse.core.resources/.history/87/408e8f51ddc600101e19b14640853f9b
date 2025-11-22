@@ -1,0 +1,11 @@
+package com.demo.service;
+
+public class ProductServiceImpl implements ProductService {
+
+	@Override
+	public void loginValidate(String uname, String pass) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

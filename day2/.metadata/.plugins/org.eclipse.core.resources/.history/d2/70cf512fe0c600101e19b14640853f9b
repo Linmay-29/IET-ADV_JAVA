@@ -1,0 +1,35 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.mysql.cj.protocol.Resultset;
+
+public class ProductDaoImpl implements ProductDao {
+	static Connection cnn;
+	static PreparedStatement loginPst;
+	static {
+		try {
+			cnn = DButils.getConnection();
+			loginPst = cnn.prepareStatement("select * from user where uname = ? and pass=?");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public boolean loginValidate(String uname, String pass) {
+		try {
+			loginPst.setString(1, uname);
+			loginPst.setString(2, pass);
+			ResultSet rs = loginPst.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+}

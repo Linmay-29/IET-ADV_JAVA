@@ -1,0 +1,11 @@
+package com.demo.service;
+
+import com.demo.beans.User;
+
+public interface ProductService {
+
+	User loginValidate(String uname, String pass);
+
+	boolean registerUser(User user);
+
+}

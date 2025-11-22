@@ -1,0 +1,27 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ProductDaoImpl implements ProductDao {
+	static Connection cnn;
+	static PreparedStatement loginPst;
+	static {
+		
+		try {
+			cnn = DButils.getConnection();
+			loginPst = cnn.prepareStatement("select * from user");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public boolean loginValidate(String uname, String pass) {
+		
+		return false;
+	}
+
+}

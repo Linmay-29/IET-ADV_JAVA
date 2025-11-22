@@ -1,0 +1,17 @@
+package com.demo.servlets;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.Products;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class EditServlet extends HttpServlet{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) {
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductService pservice = new ProductServiceImpl();
+		Products p =  pservice.getProductByID(pid);
+	}
+}

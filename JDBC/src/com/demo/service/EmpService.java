@@ -1,0 +1,17 @@
+package com.demo.service;
+
+public interface EmpService {
+
+	boolean insertEmp();
+
+	boolean updateEmpSal();
+
+	void printEmp();
+
+	void showSalByID();
+
+	boolean deleteEmpById();
+
+	double TotalEmpSal();
+
+}

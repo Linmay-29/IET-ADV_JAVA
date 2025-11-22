@@ -1,0 +1,60 @@
+package com.demo.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class TestCreateStatment {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Connection cnn = null;
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			String link = "jdbc:mysql://192.168.10.117:3306/dac35?useSSL=false";
+			cnn=DriverManager.getConnection(link,"dac35","welcome");
+			if(cnn!=null) {
+				System.out.println("Connection done");
+			}else {
+				System.out.println("Connection not done");
+			}
+			Statement st = cnn.createStatement();
+			ResultSet rs = st.executeQuery("select * from myproduct");
+			
+			while(rs.next()) {
+				System.out.print("pid = "+rs.getInt(1)+" || ");
+				System.out.print("pname = " + rs.getString("pname")+" || ");
+				System.out.print("qyt = " + rs.getInt(3)+" || ");
+				System.out.print("Price = " + rs.getDouble("price")+" || ");
+				System.out.print("Mfgdate = " + rs.getDate(5));
+				System.out.println("\n--------------------------------------------");
+			}
+			System.out.println("Enter Pid");
+			int pid = sc.nextInt();
+			sc.nextLine();
+			System.out.println("Enter product name");
+			String ppname= sc.nextLine();
+			System.out.println("Enter Quantity");
+			int qty = sc.nextInt();
+			System.out.println("Enter Price");
+			Double price = sc.nextDouble();
+			System.out.println("Enter date(yyyy-mm-dd)");
+			String date = sc.next();
+			LocalDate ld =LocalDate.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			
+			int check = st.executeUpdate("insert into myproduct values("+pid+","+ppname+","+qty+","+price+","+java.sql.Date.valueOf(ld)+")");
+			if(check>0) {
+				System.out.println("1 row updated");
+			}else {
+				System.out.println("Row not updated");
+			}
+		}catch(SQLException e){
+			
+		}
+	}
+	
+}

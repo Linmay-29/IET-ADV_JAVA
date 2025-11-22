@@ -1,0 +1,33 @@
+package com.demo.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.demo.beans.Employee;
+
+public class EmpDaoImpl implements EmpDao {
+	static Connection conn;
+	static PreparedStatement insPst;
+	
+	static {
+		try {
+			conn=HBUtils.getConnection();
+			insPst=conn.prepareStatement("insert into emp values(?,?,?,?)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public boolean addEmp(Employee emp){
+		try {
+			insPst.setInt(1, emp.getEid());
+			insPst.setString(2, emp.getEname());
+			insPst.setDouble(3, emp.getSal());
+			insPst.setDate(4, emp.getHireDate());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

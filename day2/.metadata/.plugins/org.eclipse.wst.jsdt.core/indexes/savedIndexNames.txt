@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\IET\Desktop\250845920035\IET_AJAVA\day2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1174681470.index
+2932711801.index
+1869289350.index
+4199096554.index
+572723742.index
+666080939.index
+3837463834.index

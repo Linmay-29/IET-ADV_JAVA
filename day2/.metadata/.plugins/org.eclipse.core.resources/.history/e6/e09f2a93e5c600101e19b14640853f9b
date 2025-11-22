@@ -1,0 +1,31 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.User;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class RegisterServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req,HttpServletResponse resp) {
+		resp.setContentType("text/html");
+		ProductService pservice = new ProductServiceImpl();
+		try {
+			PrintWriter out = resp.getWriter();
+			int id = Integer.parseInt(req.getParameter("id"));
+			String uname = req.getParameter("name");
+			String pass = req.getParameter("pass");
+			boolean status = pservice.registerUser(new User(id,uname,pass));
+			if(status) {
+				out.print("Register sucess");	
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

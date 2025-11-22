@@ -1,0 +1,7 @@
+package com.demo.test;
+
+import java.sql.Connection;
+
+public class TestCreateStatment {
+	Connection cnn = null;
+}
