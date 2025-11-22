@@ -19,4 +19,6 @@ public interface ProductDao {
 
 	boolean updateById(Products products);
 
+	boolean validateUser(String uname, String email);
+
 }

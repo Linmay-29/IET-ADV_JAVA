@@ -22,7 +22,8 @@ public class RegisterServlet extends HttpServlet {
 			int id = Integer.parseInt(req.getParameter("id"));
 			String uname = req.getParameter("name");
 			String pass = req.getParameter("pass");
-			boolean status = pservice.registerUser(new User(id,uname,pass));
+			String email = req.getParameter("email");
+			boolean status = pservice.registerUser(new User(id,uname,email,pass));
 			if(status) {
 				out.print("Register sucess");	
 				RequestDispatcher rd = req.getRequestDispatcher("login.html");

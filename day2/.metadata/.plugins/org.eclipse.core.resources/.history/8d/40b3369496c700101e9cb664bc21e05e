@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type= "text" name="pass" id="pass" placeholder="Enter Password"></input>
+	<input type= "text" name="repass" id="repass" placeholder="Re-ENter Password"></input>
+	<button type=submit>Submit</button>
+</body>
+</html>

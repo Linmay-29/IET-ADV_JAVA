@@ -57,4 +57,22 @@
   	<servlet-name>updateProducts</servlet-name>
   	<url-pattern>/updateProducts</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>forgotPassword</servlet-name>
+  	<servlet-class>com.demo.servlets.ForgotPassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>forgotPassword</servlet-name>
+  	<url-pattern>/forgotPass</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>checkNewPassword</servlet-name>
+  	<servlet-class>com.demo.servlets.CheckNewPassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>checkNewPassword</servlet-name>
+  	<url-pattern>/checkNewPass</url-pattern>
+  </servlet-mapping>
 </web-app>

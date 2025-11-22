@@ -18,4 +18,6 @@ public interface ProductService {
 
 	boolean updateProduct(Products products);
 
+	boolean validateUser(String uname, String email);
+
 }

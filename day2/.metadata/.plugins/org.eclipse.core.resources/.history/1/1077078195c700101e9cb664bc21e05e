@@ -1,0 +1,22 @@
+package com.demo.dao;
+
+import java.util.List;
+
+import com.demo.beans.Products;
+import com.demo.beans.User;
+
+public interface ProductDao {
+
+	User loginValidate(String uname, String pass);
+
+	boolean registerUser(User user);
+
+	List<Products> getProducts();
+
+	boolean delById(int pid);
+
+	Products findProductById(int pid);
+
+	boolean updateById(Products products);
+
+}

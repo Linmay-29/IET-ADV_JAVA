@@ -1,0 +1,12 @@
+package com.demo.servlets;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ForgotPassServlet extends HttpServlet{
+	public void doPost(HttpServletRequest req,HttpServletResponse res) {
+		String uname = req.getParameter("uname");
+		String email = req.getParameter("email");
+	}
+}

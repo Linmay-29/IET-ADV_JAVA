@@ -1,0 +1,18 @@
+package com.demo.servlets;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class CheckNewPassServlet extends HttpServlet{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) {
+		String pass = req.getParameter("pass");
+		String repass = req.getParameter("repass");
+		if(pass.equals(repass)) {
+			RequestDispatcher rs = req.getRequestDispatcher("loginValidate");
+			rd.forward(req,res);
+		}
+	}
+
+}

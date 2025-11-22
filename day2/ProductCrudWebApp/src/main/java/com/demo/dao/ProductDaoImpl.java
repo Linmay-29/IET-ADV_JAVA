@@ -18,15 +18,17 @@ public class ProductDaoImpl implements ProductDao {
 	static PreparedStatement delPst;
 	static PreparedStatement getPst;
 	static PreparedStatement updatePst;
+	static PreparedStatement valPst;
 	static {
 		try {
 			cnn = DButils.getConnection();
 			loginPst = cnn.prepareStatement("select * from user where uname = ? and pass=?");
-			regPst = cnn.prepareStatement("insert into user values(?,?,?)");
+			regPst = cnn.prepareStatement("insert into user values(?,?,?,?)");
 			selPst = cnn.prepareStatement("select * from products");
 			delPst=cnn.prepareStatement("delete from products where pid = ?");
 			getPst=cnn.prepareStatement("select * from products where pid= ?");
 			updatePst=cnn.prepareStatement("update products set pname=?,qty=?,price=? where pid=?");
+			valPst=cnn.prepareStatement("select * from user where uname=? and email=?");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,10 +40,9 @@ public class ProductDaoImpl implements ProductDao {
 			loginPst.setString(2, pass);
 			ResultSet rs = loginPst.executeQuery();
 			if(rs.next()) {
-				return new User(rs.getInt(1),rs.getString(2));
+				return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -51,7 +52,8 @@ public class ProductDaoImpl implements ProductDao {
 		try {
 			regPst.setInt(1, user.getId());
 			regPst.setString(2, user.getName());
-			regPst.setString(3, user.getPass());
+			regPst.setString(3, user.getEmail());
+			regPst.setString(4, user.getPass());
 			int result = regPst.executeUpdate();
 			return result>0;
 		} catch (SQLException e) {
@@ -107,6 +109,18 @@ public class ProductDaoImpl implements ProductDao {
 			
 			int n = updatePst.executeUpdate();
 			return n>0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	@Override
+	public boolean validateUser(String uname, String email) {
+		try {
+			valPst.setString(1, uname);
+			valPst.setString(2, email);
+			ResultSet rs = valPst.executeQuery();
+			return rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

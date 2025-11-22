@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+</head>
+<body>
+	<form action = "loginValidate">
+		<input type = "text" name = "uname" id = "uname"/>
+		<input type = "text" name = "pass" id = "pass"/>
+		<button type="submit" name = "login">Login</button>
+		<button type="submit" name = "forgot">Forget Password</button>
+	</form>
+</body>
+</html>

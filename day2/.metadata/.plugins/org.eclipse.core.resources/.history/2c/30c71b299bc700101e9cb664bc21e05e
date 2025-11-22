@@ -1,0 +1,42 @@
+package com.demo.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.demo.beans.User;
+import com.demo.service.ProductService;
+import com.demo.service.ProductServiceImpl;
+
+public class LoginServlet extends HttpServlet{
+	public void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		ProductService pservice = new ProductServiceImpl();
+		
+		String uname = req.getParameter("uname");
+		String pass = req.getParameter("pass");
+		String btn = req.getParameter("btn");
+		if(btn=="login") {		
+			User user = pservice.loginValidate(uname,pass);
+			if(user!=null) {
+				out.println("Sucesss");
+				RequestDispatcher rd = req.getRequestDispatcher("showProducts");
+				rd.forward(req, resp);
+			}else {
+				out.println("Register first");
+				RequestDispatcher rd = req.getRequestDispatcher("register.html");
+				rd.include(req, resp);
+			}
+		}else{
+			RequestDispatcher rd = req.getRequestDispatcher("forgotPass.html");
+			rd.forward(req, resp);
+		}
+		
+	}
+}

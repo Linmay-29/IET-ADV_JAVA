@@ -37,6 +37,10 @@ public class ProductServiceImpl implements ProductService {
 	public boolean updateProduct(Products products) {
 		return pdao.updateById(products);
 	}
+	@Override
+	public boolean validateUser(String uname, String email) {
+		return pdao.validateUser(uname,email);
+	}
 
 
 
