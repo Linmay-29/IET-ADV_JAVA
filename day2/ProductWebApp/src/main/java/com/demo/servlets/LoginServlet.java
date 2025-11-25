@@ -3,6 +3,8 @@ package com.demo.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +23,25 @@ public class LoginServlet extends HttpServlet{
 		PrintWriter out = resp.getWriter();
 		if(user!=null) {
 			out.println("<h3>Login Success</h3>");
+			RequestDispatcher rd = req.getRequestDispatcher("product.html");
+			try {
+				rd.forward(req, resp);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}else {
 			out.println("<h3>User not found</h3>");
+			out.println("<h3>Register new user</h3>");
+			RequestDispatcher rd = req.getRequestDispatcher("login.html");
+			try {
+				rd.include(req, resp);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
