@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet{
 		PrintWriter out = resp.getWriter();
 		if(user!=null) {
 			out.println("<h3>Login Success</h3>");
-			RequestDispatcher rd = req.getRequestDispatcher("product.html");
+			RequestDispatcher rd = req.getRequestDispatcher("/products");
 			try {
 				rd.forward(req, resp);
 			} catch (ServletException e) {

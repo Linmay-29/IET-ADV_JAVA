@@ -17,7 +17,7 @@ public class ProductDaoImpl implements ProductDao{
 		
 		try {
 			cnn = DBUtils.getConnection();
-			propst = cnn.prepareStatement("select * from product");
+			propst = cnn.prepareStatement("select * from products");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

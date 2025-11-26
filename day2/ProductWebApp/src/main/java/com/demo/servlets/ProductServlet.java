@@ -14,18 +14,22 @@ import com.demo.service.ProductServiceImpl;
 
 public class ProductServlet extends HttpServlet{
 	ProductService pservice = new ProductServiceImpl();
-	public void doGet(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+	public void doPost(HttpServletRequest req,HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		List<Product> plist = pservice.getProducts();
 		
 		if(plist!=null) {
-			out.println("<table border='1'><tr><th>Pid</th><th>Product Name</th><th>Qty</th><th>Price</th><th>Manage</th></tr>");
+			out.println("<form action = 'billing' method = 'post'>");
+			out.println("<table border='1'><tr><th>Pid</th><th>Product Name</th><th>Qty</th><th>Price</th><th>Add To Cart</th></tr>");
 			for(Product p : plist) {
 				out.println("<tr><td>"+p.getPid()+"</td><td>"+p.getPname()+"</td><td>"+p.getQty()+"</td><td>"+p.getPrice()+"</td>"
-						+ "<td><a href='delProducts?pid="+p.getPid()+"'>Delete</a>  <a href='editProducts?pid="+p.getPid()+"'>Edit</a></td></tr>");
+						+ "<td><input type ='checkbox' name='selectedProducts' id="+p.getPid()+" value="+p.getPid()+"></td></tr>");
 			}
 			out.println("</table>");
+			out.println("<button type='submit' name='btn' id = 'btn'>Check Out</button>");
+			out.println("</form>");
+			
 		}else {
 			out.println("<h1>Data is not present</h1>");
 		}
