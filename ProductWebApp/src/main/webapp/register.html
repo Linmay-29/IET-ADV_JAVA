@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        width: 320px;
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+        border-color: #fcb69f;
+        outline: none;
+    }
+
+    button {
+        width: 95%;
+        padding: 10px;
+        background: #fcb69f;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #f78a6c;
+    }
+</style>
+</head>
+<body>
+    <form action="registeruser" method="get">
+        <input type="text" name="uname" id="uname" placeholder="Enter Username"/>
+        <input type="text" name="pass" id="pass" placeholder="Enter Password"/>
+        <input type="email" name="email" id="email" placeholder="Enter Email"/>
+        <button type="submit" name="btn" id="btn">Register</button>
+    </form>
+</body>
+</html>
