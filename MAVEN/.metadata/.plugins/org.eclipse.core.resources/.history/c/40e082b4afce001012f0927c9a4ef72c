@@ -1,0 +1,9 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+public class Employee {
+	private int eid;
+	private String ename;
+	private Set<Project> pset;
+}

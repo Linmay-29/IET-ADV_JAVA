@@ -1,0 +1,49 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Items {
+	@Id
+	private int iid;
+	private String iname;
+	@ManyToOne
+	private Cart cobj;
+	public Items() {
+		super();
+	}
+	public Items(int iid, String iname, Cart cobj) {
+		super();
+		this.iid = iid;
+		this.iname = iname;
+		this.cobj = cobj;
+	}
+	public int getIid() {
+		return iid;
+	}
+	public void setIid(int iid) {
+		this.iid = iid;
+	}
+	public String getIname() {
+		return iname;
+	}
+	public void setIname(String iname) {
+		this.iname = iname;
+	}
+	public Cart getCobj() {
+		return cobj;
+	}
+	public void setCobj(Cart cobj) {
+		this.cobj = cobj;
+	}
+	@Override
+	public String toString() {
+		return "Items [iid=" + iid + ", iname=" + iname + ", cobj=" + cobj + "]";
+	}
+	
+}

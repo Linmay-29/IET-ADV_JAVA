@@ -1,0 +1,52 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cart")
+public class Cart {
+	@Id
+	private int cid;
+	private String cname;
+	@OneToMany
+	@JoinColumn(name="Item_Id")
+	private Set<Items> iset;
+	public Cart() {
+		super();
+	}
+	public Cart(int cid, String cname) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.iset = null;
+	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public Set<Items> getIset() {
+		return iset;
+	}
+	public void setIset(Set<Items> iset) {
+		this.iset = iset;
+	}
+	@Override
+	public String toString() {
+		return "Cart [cid=" + cid + ", cname=" + cname + ", iset=" + iset + "]";
+	}
+	
+}

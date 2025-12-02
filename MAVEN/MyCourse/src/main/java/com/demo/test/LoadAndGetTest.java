@@ -1,0 +1,34 @@
+package com.demo.test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.Course;
+import com.demo.beans.Faculty;
+
+public class LoadAndGetTest {
+
+	public static void main(String[] args) {
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session2 = sf.openSession();
+		Transaction tr2 = session2.beginTransaction();
+		System.out.println("Before get");
+		Faculty f1 = session2.get(Faculty.class, 14);
+		System.out.println("After get");
+		System.out.println(f1.getC1());
+		System.out.println(f1);
+		
+		
+		System.out.println("Before Load");
+		Course c2 = session2.load(Course.class, 17);
+		System.out.println("After Load");
+		System.out.println(c2);
+		System.out.println(c2.getF1());
+		tr2.commit();
+		session2.close();
+		sf.close();
+		
+	}
+}

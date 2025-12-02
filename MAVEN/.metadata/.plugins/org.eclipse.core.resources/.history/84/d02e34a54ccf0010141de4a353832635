@@ -1,0 +1,11 @@
+package com.demo.beans;
+
+public class Items {
+	private int iid;
+	private String iname;
+	private Cart cobj;
+	public Items() {
+		super();
+	}
+	
+}

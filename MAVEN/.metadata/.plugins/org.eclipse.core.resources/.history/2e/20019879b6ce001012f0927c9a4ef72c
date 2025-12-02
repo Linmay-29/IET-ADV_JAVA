@@ -1,0 +1,19 @@
+package com.demo.dao;
+
+import java.util.Scanner;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+
+	Scanner sc = new Scanner(System.in); 
+	public boolean saveEmployee() {
+		System.out.println("Enter Emp id");
+		int eid = sc.nextInt();
+		System.out.println("Enter name");
+		String ename = sc.next();
+		sc.next();
+		System.out.println("ENter hiredate");
+		String dt = 
+		return false;
+	}
+
+}

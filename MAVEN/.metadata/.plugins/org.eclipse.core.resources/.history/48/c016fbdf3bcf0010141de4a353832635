@@ -1,0 +1,35 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import com.demo.service.EmployeeService;
+import com.demo.service.EmployeeServiceImpl;
+
+public class CrudTest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int choice = 0;
+		do {
+			System.out.println("Select a option");
+			System.out.println("1.Add Project \n2.Add Employee \n3.Show All Employee \n4.Delete Employee");
+			System.out.println("5.Update Employee Salary \n6.Exit");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1-> {
+				System.out.println("Enter Project ID");
+				int pid = sc.nextInt();
+				System.out.println("Enter Project Name");
+				String pname = sc.next();
+				System.out.println("Enter Start Date");
+				String sdate = sc.next();
+			}
+				
+				
+			}
+			
+		}while(choice!=6);
+
+	}
+
+}

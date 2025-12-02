@@ -1,0 +1,16 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Items {
+	@Id
+	private int iid;
+	private String iname;
+	@OneToMany(mappedBy = "iset")
+	private Cart cobj;
+}

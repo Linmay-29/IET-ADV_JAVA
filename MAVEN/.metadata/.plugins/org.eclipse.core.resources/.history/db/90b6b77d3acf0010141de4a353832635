@@ -1,0 +1,13 @@
+package com.demo.test;
+
+import com.demo.service.EmployeeService;
+import com.demo.service.EmployeeServiceImpl;
+
+public class CrudTest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+	}
+
+}

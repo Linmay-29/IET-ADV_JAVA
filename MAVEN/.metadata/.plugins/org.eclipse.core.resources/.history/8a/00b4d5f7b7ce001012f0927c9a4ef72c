@@ -1,0 +1,21 @@
+package com.demo.dao;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+
+	Scanner sc = new Scanner(System.in); 
+	public boolean saveEmployee() {
+		System.out.println("Enter Emp id");
+		int eid = sc.nextInt();
+		System.out.println("Enter name");
+		String ename = sc.next();
+		System.out.println("ENter hiredate(dd/mm/yyyy)");
+		String dt = sc.next();
+		LocalDate ldt = LocalDate.parse(dt,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		return false;
+	}
+
+}

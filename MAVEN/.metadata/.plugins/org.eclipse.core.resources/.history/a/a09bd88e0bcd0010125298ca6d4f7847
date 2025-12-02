@@ -1,0 +1,12 @@
+package com.demo.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+public class Products {
+	@Entity
+	@Table(name="Products1")
+	private int pid;
+	private String pname;
+	private double price;
+}

@@ -1,0 +1,10 @@
+package com.demo.service;
+
+public class EmployeeServiceImpl implements EmployeeService{
+
+	public boolean addNewEmployee() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

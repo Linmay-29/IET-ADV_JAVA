@@ -1,0 +1,14 @@
+package com.demo.service;
+
+import com.demo.dao.ProjectDao;
+import com.demo.dao.ProjectDaoImpl;
+
+public class ProjectServiceImpl implements ProjectService{
+	private ProjectDao pdao;
+
+	public ProjectServiceImpl() {
+		pdao = new ProjectDaoImpl();
+	}
+
+	
+}

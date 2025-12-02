@@ -1,0 +1,41 @@
+package com.demo.test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.Cart;
+import com.demo.beans.Items;
+
+public class MyTest {
+	public static void main(String[] args) {
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		Cart c1 = new Cart(1,"Cart1");
+		Items i1 = new Items(1,"Laptop",c1);
+		Items i2 = new Items(2,"Mouse",c1);
+		Items i3 = new Items(3,"Keyboard",c1);
+		Set<Items> iset1 = new HashSet<Items>();
+		iset1.add(i1);
+		iset1.add(i2);
+		iset1.add(i3);
+		c1.setIset(iset1);
+		Cart c2 = new Cart(2,"Cart2");
+		Set<Items> iset2 = new HashSet<Items>();
+		iset2.add(i2);
+		iset2.add(i3);
+		c2.setIset(iset2);
+		session.save(c1);
+		session.save(c2);
+		session.save(i1);
+		session.save(i2);
+		session.save(i3);
+		tr.commit();
+		sf.close();
+	}
+}

@@ -1,0 +1,9 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+public class Project {
+	private int pid;
+	private String pname;
+	private Set<Employee> eset;
+}

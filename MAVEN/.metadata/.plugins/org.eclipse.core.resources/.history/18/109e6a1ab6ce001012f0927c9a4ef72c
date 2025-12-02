@@ -1,0 +1,13 @@
+package com.demo.dao;
+
+import java.util.Scanner;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+
+	Scanner sc = new Scanner(System.in); 
+	public boolean saveEmployee() {
+		
+		return false;
+	}
+
+}

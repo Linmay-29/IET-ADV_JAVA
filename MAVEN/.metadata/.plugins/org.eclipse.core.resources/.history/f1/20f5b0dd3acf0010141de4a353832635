@@ -1,0 +1,20 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import com.demo.service.EmployeeService;
+import com.demo.service.EmployeeServiceImpl;
+
+public class CrudTest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int choice = 0;
+		do {
+			System.out.println("Select a option");
+			System.out.println("1.Add Project \n2.Add Employee \n3.Show All Employee \n.Delete All Employee");
+		}
+
+	}
+
+}

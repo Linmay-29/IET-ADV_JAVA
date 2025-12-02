@@ -1,0 +1,17 @@
+package com.demo.test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.Cart;
+import com.demo.beans.Items;
+
+public class MyTest {
+	SessionFactory sf = new Configuration().configure().buildSessionFactory();
+	Session session = sf.getCurrentSession();
+	Transaction tr = session.beginTransaction();
+	Cart c1 = new Cart(1,"Cart1");
+	Items i1 = new Items(1,"Laptop",c1);
+}

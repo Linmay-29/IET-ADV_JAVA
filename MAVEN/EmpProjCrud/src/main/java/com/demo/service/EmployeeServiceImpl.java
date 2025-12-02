@@ -1,0 +1,53 @@
+package com.demo.service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.demo.beans.Employee;
+import com.demo.beans.Project;
+import com.demo.dao.EmployeeDao;
+import com.demo.dao.EmployeeDaoImpl;
+import com.demo.dao.ProjectDao;
+import com.demo.dao.ProjectDaoImpl;
+
+import antlr.collections.List;
+
+public class EmployeeServiceImpl implements EmployeeService{
+	EmployeeDao edao;
+	ProjectDao pdao;
+	Scanner sc = new Scanner(System.in);
+	
+	public EmployeeServiceImpl() {
+		edao = new EmployeeDaoImpl();
+		pdao = new ProjectDaoImpl();
+	}
+	public boolean addNewEmployee() {
+		System.out.println("Enter Emp id");
+		int eid = sc.nextInt();
+		System.out.println("Enter name");
+		String ename = sc.next();
+		System.out.println("ENter hiredate(dd/mm/yyyy)");
+		String dt = sc.next();
+		LocalDate ldt = LocalDate.parse(dt,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		System.out.println("Enter Salary");
+		double sal = sc.nextDouble();
+		System.out.println("Enter all project Id's of Employee");
+		String pid = sc.next();
+		String[] parr = pid.split(",");
+		Set<Project> pset = pdao.findById(parr);
+		Employee e1 = new Employee(eid,ename,ldt,sal,pset);
+		return edao.saveEmployee(e1);
+	}
+	@Override
+	public void showAllEmp() {
+		java.util.List<Employee> elist = edao.showAll();
+		for(Employee l : elist) {
+			System.out.println(l);
+		}
+		
+	}
+
+}

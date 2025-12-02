@@ -1,0 +1,39 @@
+package com.demo.dao;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.demo.beans.Employee;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+	
+	static SessionFactory sf;
+	static {
+		sf = HibernateUtils.getMySessionFactory();
+	}
+	Scanner sc = new Scanner(System.in); 
+	public boolean saveEmployee(Employee e) {
+		if(e!=null) {
+			Session session = sf.openSession();
+			Transaction tr = session.beginTransaction();
+			session.save(e);
+			tr.commit();
+			session.close();
+			return true;
+		}else {
+			return false;
+		}
+	}
+	@Override
+	public Set<Employee> showAll() {
+		Session session = sf.openSession();
+		return null;
+	}
+
+}

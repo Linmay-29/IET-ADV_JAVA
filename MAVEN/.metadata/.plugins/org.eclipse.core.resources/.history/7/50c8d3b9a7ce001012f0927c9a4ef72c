@@ -1,0 +1,9 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+public class Cart {
+	private int cid;
+	private String cname;
+	private Set<Items> iset;
+}

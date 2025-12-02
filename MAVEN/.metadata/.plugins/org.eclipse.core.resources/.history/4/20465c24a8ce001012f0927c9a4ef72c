@@ -1,0 +1,12 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Items {
+	private int iid;
+	private String iname;
+	private Set<Cart> cset;
+}
