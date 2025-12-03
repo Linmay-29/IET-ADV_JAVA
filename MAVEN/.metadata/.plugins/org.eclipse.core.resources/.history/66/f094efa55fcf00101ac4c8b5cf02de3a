@@ -1,0 +1,13 @@
+package com.demo.dao;
+
+import com.demo.beans.Items;
+
+public class ItemDaoImpl implements ItemDao{
+
+	@Override
+	public boolean save(Items i) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

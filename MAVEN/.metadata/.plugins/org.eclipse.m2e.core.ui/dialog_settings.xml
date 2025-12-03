@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\IET\Desktop\MAVEN\EmpProjCrud"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\Demo"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\Demo\pom.xml"/>
 		</list>
@@ -48,6 +49,7 @@
 			<item value="com.demo"/>
 		</list>
 		<list key="name">
+			<item value="InheritanceSingleTable"/>
 			<item value="ItemCartCrud"/>
 			<item value="EmpProjCrud"/>
 			<item value="ManyToMany"/>
@@ -57,6 +59,7 @@
 			<item value="Demo"/>
 		</list>
 		<list key="artifactId">
+			<item value="InheritanceSingleTable"/>
 			<item value="ItemCartCrud"/>
 			<item value="EmpProjCrud"/>
 			<item value="ManyToMany"/>

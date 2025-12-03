@@ -22,6 +22,11 @@ public class Cart {
 		this.cdate = cdate;
 		this.iset = iset;
 	}
+	public Cart(int cid, String cdate) {
+		super();
+		this.cid = cid;
+		this.cdate = cdate;
+	}
 	public int getCid() {
 		return cid;
 	}

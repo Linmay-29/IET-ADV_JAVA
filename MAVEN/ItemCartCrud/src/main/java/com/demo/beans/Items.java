@@ -16,6 +16,12 @@ public class Items {
 	public Items() {
 		super();
 	}
+	public Items(int iid, String iname) {
+		super();
+		this.iid = iid;
+		this.iname = iname;
+	}
+
 	public Items(int iid, String iname, Cart cobj) {
 		super();
 		this.iid = iid;

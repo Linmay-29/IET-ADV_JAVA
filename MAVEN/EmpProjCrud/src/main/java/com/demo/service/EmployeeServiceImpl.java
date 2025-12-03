@@ -43,11 +43,33 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 	@Override
 	public void showAllEmp() {
+//		java.util.List<Employee> elist = edao.showAll();
+//		for(Employee l : elist) {
+//			System.out.println(l);
+//		}
 		java.util.List<Employee> elist = edao.showAll();
 		for(Employee l : elist) {
 			System.out.println(l);
 		}
 		
 	}
+	@Override
+	public Employee deleteEmployee(int eid) {
+		return edao.delete(eid);
+	}
+	@Override
+	public boolean updateSalary(int eid, double nsal) {
+		return edao.updateSal(eid,nsal);
+	}
+	@Override
+	public boolean addEmpToPrpject(int eid, int pid) {
+		return edao.addEmpToProj(eid,pid);
+	}
+	@Override
+	public java.util.List<Employee> sortBySalary() {
+		
+		return edao.sortBySalary();
+	}
+	
 
 }

@@ -1,0 +1,17 @@
+package com.demo.beans;
+
+import java.time.LocalDate;
+
+public class NonPerishableProduct {
+	private int garentee;
+
+	public NonPerishableProduct() {
+		super();
+	}
+
+	public NonPerishableProduct(int pid, String pname, int qty, double price, LocalDate mgdate,int garentee) {
+		super();
+		this.garentee = garentee;
+	}
+	
+}

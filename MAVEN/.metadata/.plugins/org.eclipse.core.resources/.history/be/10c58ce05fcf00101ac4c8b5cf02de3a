@@ -1,0 +1,18 @@
+package com.demo.dao;
+
+import org.hibernate.SessionFactory;
+
+import com.demo.beans.Items;
+
+public class ItemDaoImpl implements ItemDao{
+	static SessionFactory sf;
+	static {
+		sf = HibernateUtil.getMySessionFactory();
+	}
+	@Override
+	public boolean save(Items i) {
+		
+		return false;
+	}
+
+}

@@ -1,0 +1,59 @@
+package com.demo.dao;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.demo.beans.Employee;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+	
+	static SessionFactory sf;
+	static {
+		sf = HibernateUtils.getMySessionFactory();
+	}
+	Scanner sc = new Scanner(System.in); 
+	public boolean saveEmployee(Employee e) {
+		if(e!=null) {
+			Session session = sf.openSession();
+			Transaction tr = session.beginTransaction();
+			session.save(e);
+			tr.commit();
+			session.close();
+			return true;
+		}else {
+			return false;
+		}
+	}
+	@Override
+	public List<Employee> showAll() {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		List<Employee> elist = session.createQuery("from Employee",Employee.class).list();
+		return elist;
+	}
+	@Override
+	public Employee delete(int eid) {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		Employee e = session.get(Employee.class, eid);
+		session.delete(e);
+		tr.commit();
+		session.close();
+		return e;
+	}
+	@Override
+	public boolean updateSal(int eid, double nsal) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+}

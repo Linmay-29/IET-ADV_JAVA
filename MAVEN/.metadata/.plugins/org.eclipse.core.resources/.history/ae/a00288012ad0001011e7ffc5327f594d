@@ -1,0 +1,60 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import com.demo.beans.Employee;
+import com.demo.service.EmployeeService;
+import com.demo.service.EmployeeServiceImpl;
+import com.demo.service.ProjectService;
+import com.demo.service.ProjectServiceImpl;
+
+public class CrudTest {
+
+	public static void main(String[] args) {
+		ProjectService pservice = new ProjectServiceImpl();
+		EmployeeService eservice = new EmployeeServiceImpl();
+		Scanner sc = new Scanner(System.in);
+		int choice = 0;
+		do {
+			System.out.println("Select a option");
+			System.out.println("1.Add Project \n2.Add Employee \n3.Show All Employee \n4.Delete Employee");
+			System.out.println("5.Update Employee Salary \n6.Exit");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1-> {
+				boolean status = pservice.addNewProject();
+				if(status) {
+					System.out.println("Project Added Sucessfully.");
+				}
+			}
+			case 2 -> {
+				boolean status = eservice.addNewEmployee();
+				if(status) {
+					System.out.println("Employee Added Sucessfully.");
+				}
+			}
+			case 3 -> {
+				eservice.showAllEmp();
+			}
+			case 4 ->{
+				System.out.println("Enter employee ID : ");
+				int eid = sc.nextInt();
+				Employee e = eservice.deleteEmployee(eid);
+				if(e!=null) {
+					System.out.println("Deleted sucessfully...");
+				}else {
+					System.out.println("Employee not found...");
+				}
+			}
+			case 6 ->{
+				System.out.println("Thanks For Visiting...");
+			}
+				
+				
+			}
+			
+		}while(choice!=6);
+
+	}
+
+}

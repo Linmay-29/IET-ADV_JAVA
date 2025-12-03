@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,7 +17,7 @@ public class Course {
 	private int id;
 	private String name;
 	private String duration;
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="faculty_id")
 	private Faculty f1;
 	public Course() {
@@ -56,6 +57,6 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + ", duration=" + duration + ", f1=" + f1 + "]";
-	}
+	}  
 	
 }

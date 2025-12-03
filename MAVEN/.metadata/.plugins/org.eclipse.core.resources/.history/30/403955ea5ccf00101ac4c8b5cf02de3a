@@ -1,0 +1,48 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Cart {
+	@Id
+	private int cid;
+	private String cdate;
+	@OneToMany(mappedBy = "cobj")
+	private Set<Items> iset;
+	public Cart() {
+		super();
+	}
+	public Cart(int cid, String cdate, Set<Items> iset) {
+		super();
+		this.cid = cid;
+		this.cdate = cdate;
+		this.iset = iset;
+	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public String getCdate() {
+		return cdate;
+	}
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
+	}
+	public Set<Items> getIset() {
+		return iset;
+	}
+	public void setIset(Set<Items> iset) {
+		this.iset = iset;
+	}
+	@Override
+	public String toString() {
+		return "Cart [cid=" + cid + ", cdate=" + cdate + ", iset=" + iset + "]";
+	}
+	
+}

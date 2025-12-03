@@ -1,0 +1,27 @@
+package com.demo.test;
+
+import java.time.LocalDate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.NonPerishableProduct;
+import com.demo.beans.PerishableProduct;
+import com.demo.beans.Product;
+
+public class DemoTest {
+	public static void main(String[] args) {
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		Product p1 = new PerishableProduct(1,"Banana",12,60.00,LocalDate.of(2025, 12, 3),LocalDate.of(2025, 12,6));
+		Product p2 = new NonPerishableProduct(2, "Laptop", 1, 65000, LocalDate.of(2025, 12, 3), 2);
+		session.save(p1);
+		session.save(p2);
+		tr.commit();
+		session.close();
+		sf.close();
+	}
+}

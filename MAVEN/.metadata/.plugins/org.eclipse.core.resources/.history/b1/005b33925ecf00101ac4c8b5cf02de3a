@@ -1,0 +1,12 @@
+package com.demo.service;
+
+import com.demo.dao.ItemDao;
+
+public class ItemServiceImpl implements ItemService{
+	ItemDao idao;
+
+	public ItemServiceImpl() {
+		idao = new ItemServiceImpl();
+	}
+	
+}

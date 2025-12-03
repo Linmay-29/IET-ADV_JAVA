@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,7 +16,7 @@ public class Faculty {
 	private int fid;
 	private String name;
 	private String specs;
-	@OneToOne(mappedBy = "f1",fetch=FetchType.LAZY)
+	@ManyToMany(mappedBy = "f1",fetch=FetchType.LAZY)
 	private Course c_id;
 	public Faculty() {
 		super();

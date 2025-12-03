@@ -1,0 +1,61 @@
+package com.demo.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="course")
+public class Course {
+	@Id
+	@GeneratedValue
+	private int id;
+	private String name;
+	private String duration;
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="faculty_id")
+	private Faculty f1;
+	public Course() {
+		super();
+	}
+	public Course(int id, String name, String duration, Faculty f1) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.duration = duration;
+		this.f1 = f1;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+	public Faculty getF1() {
+		return f1;
+	}
+	public void setF1(Faculty f1) {
+		this.f1 = f1;
+	}
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", duration=" + duration + ", f1=" + f1 + "]";
+	}  
+	
+}

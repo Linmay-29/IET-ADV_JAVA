@@ -1,7 +1,9 @@
 package com.demo.test;
 
+import java.util.List;
 import java.util.Scanner;
 
+import com.demo.beans.Employee;
 import com.demo.service.EmployeeService;
 import com.demo.service.EmployeeServiceImpl;
 import com.demo.service.ProjectService;
@@ -17,7 +19,7 @@ public class CrudTest {
 		do {
 			System.out.println("Select a option");
 			System.out.println("1.Add Project \n2.Add Employee \n3.Show All Employee \n4.Delete Employee");
-			System.out.println("5.Update Employee Salary \n6.Exit");
+			System.out.println("5.Update Employee Salary \n6.Add Employee in existing project. \n7.Display Employee in sorted order. \n8.Exit");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1-> {
@@ -30,19 +32,57 @@ public class CrudTest {
 				boolean status = eservice.addNewEmployee();
 				if(status) {
 					System.out.println("Employee Added Sucessfully.");
+				}else {
+					System.out.println("Employee Not Added.");
 				}
 			}
 			case 3 -> {
 				eservice.showAllEmp();
 			}
+			case 4 ->{
+				System.out.println("Enter employee ID : ");
+				int eid = sc.nextInt();
+				Employee e = eservice.deleteEmployee(eid);
+				if(e!=null) {
+					System.out.println("Deleted sucessfully...");
+				}else {
+					System.out.println("Employee not found...");
+				}
+			}
+			case 5 ->{
+				System.out.println("Enter Employee ID :");
+				int eid = sc.nextInt();
+				System.out.println("Enter new salary");
+				double nsal = sc.nextDouble();
+				boolean status = eservice.updateSalary(eid,nsal);
+				if(status) {
+					System.out.println("Salary Updated Sucessfully.");
+				}else {
+					System.out.println("Salary Not Updated.3");
+				}
+			}
 			case 6 ->{
+				System.out.println("Enter Employee ID : ");
+				int eid = sc.nextInt();
+				System.out.println("Enter Project ID :");
+				int pid = sc.nextInt();
+				boolean status = eservice.addEmpToPrpject(eid,pid);
+			}
+			case 7 -> {
+				System.out.println("Employee in sorted order.");
+				List<Employee> elist = eservice.sortBySalary();
+				for(Employee e : elist) {
+					System.out.println(e);
+				}
+			}
+			case 8 ->{
 				System.out.println("Thanks For Visiting...");
 			}
 				
 				
 			}
 			
-		}while(choice!=6);
+		}while(choice!=8);
 
 	}
 

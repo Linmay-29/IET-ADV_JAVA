@@ -11,6 +11,14 @@ public interface EmployeeDao {
 
 	List<Employee> showAll();
 
+	Employee delete(int eid);
+
+	boolean updateSal(int eid, double nsal);
+
+	boolean addEmpToProj(int eid, int pid);
+
+	List<Employee> sortBySalary();
+
 	
 
 }

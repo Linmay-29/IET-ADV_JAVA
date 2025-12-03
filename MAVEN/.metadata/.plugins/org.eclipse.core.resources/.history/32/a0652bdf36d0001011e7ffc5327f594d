@@ -1,0 +1,17 @@
+package com.demo.beans;
+
+import java.time.LocalDate;
+
+public class PerishableProduct extends Product{
+	private LocalDate expdate;
+
+	public PerishableProduct() {
+		super();
+	}
+
+	public PerishableProduct(int pid, String pname, int qty, double price, LocalDate mgdate,LocalDate expdate) {
+		super(pid,pname,price,mgdate);
+		this.expdate = expdate;
+	}
+	
+}

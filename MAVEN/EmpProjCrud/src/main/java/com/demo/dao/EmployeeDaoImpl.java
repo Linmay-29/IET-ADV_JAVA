@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.demo.beans.Employee;
+import com.demo.beans.Project;
 
 public class EmployeeDaoImpl implements EmployeeDao{
 	
@@ -36,17 +37,62 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public List<Employee> showAll() {
 		Session session = sf.openSession();
 		Transaction tr = session.beginTransaction();
-		List<Employee> elsit = new ArrayList<>();
-		int id = 1;
-		while(true) {
-			Employee e = session.get(Employee.class, id);
-			if(e == null) {
-				break;
-			}
-			elsit.add(e);
-			id++;
+		List<Employee> elist = session.createQuery("from Employee",Employee.class).list();
+		return elist;
+	}
+	@Override
+	public Employee delete(int eid) {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		Employee e = session.get(Employee.class, eid);
+		session.delete(e);
+		tr.commit();
+		session.close();
+		return e;
+	}
+	@Override
+	public boolean updateSal(int eid, double nsal) {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		Employee e = session.get(Employee.class, eid);
+		if(e!=null) {
+			e.setSal(nsal);
+			session.merge(e);
+			tr.commit();
+			session.close();
+			return true;
+		}else {
+			tr.commit();
+			session.close();
+			return false;
 		}
-		return elsit;
+	}
+	@Override
+	public boolean addEmpToProj(int eid, int pid) {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		Employee e = session.get(Employee.class, eid);
+		Project p = session.get(Project.class, pid);
+		if(e!=null && p!=null) {
+			Set<Project> pset = e.getPset();
+			pset.add(p);
+			e.setPset(pset);
+			session.merge(e);
+			tr.commit();
+			session.close();
+			return true;
+		}else {
+			tr.commit();
+			session.close();
+			return false;
+		}
+	}
+	@Override
+	public List<Employee> sortBySalary() {
+		Session session = sf.openSession();
+		Transaction tr = session.beginTransaction();
+		List<Employee> elist = session.createQuery("from Employee order by sal",Employee.class).list();
+		return elist;
 	}
 	
 
