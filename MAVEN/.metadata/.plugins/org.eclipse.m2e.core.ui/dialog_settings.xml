@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\IET\Desktop\MAVEN\InheritanceJoinedTable"/>
+			<item value="C:\Users\IET\Desktop\MAVEN\InheritanceSingleTable\src\main\java\com\demo\test\DemoTest.java"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\EmpProjCrud"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\Demo"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\Demo\pom.xml"/>
@@ -49,6 +51,8 @@
 			<item value="com.demo"/>
 		</list>
 		<list key="name">
+			<item value="MyFirstSpringProject"/>
+			<item value="InheritanceJoinedTable"/>
 			<item value="InheritanceSingleTable"/>
 			<item value="ItemCartCrud"/>
 			<item value="EmpProjCrud"/>
@@ -59,6 +63,8 @@
 			<item value="Demo"/>
 		</list>
 		<list key="artifactId">
+			<item value="MyFirstSpringProject"/>
+			<item value="InheritanceJoinedTable"/>
 			<item value="InheritanceSingleTable"/>
 			<item value="ItemCartCrud"/>
 			<item value="EmpProjCrud"/>

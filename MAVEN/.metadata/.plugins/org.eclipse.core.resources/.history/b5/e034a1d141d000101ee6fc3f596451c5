@@ -1,0 +1,9 @@
+package com.demo.beans;
+
+public class Student {
+	private int pid;
+	private String pname;
+	private int m1;
+	private int m2;
+	private int m3;
+}
