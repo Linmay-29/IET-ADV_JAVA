@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\IET\Desktop\MAVEN\AllXMLSpring"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\InheritanceJoinedTable"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\InheritanceSingleTable\src\main\java\com\demo\test\DemoTest.java"/>
 			<item value="C:\Users\IET\Desktop\MAVEN\EmpProjCrud"/>
@@ -48,31 +49,10 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="com.demo"/>
 		</list>
 		<list key="name">
-			<item value="MyFirstSpringProject"/>
-			<item value="InheritanceJoinedTable"/>
-			<item value="InheritanceSingleTable"/>
-			<item value="ItemCartCrud"/>
-			<item value="EmpProjCrud"/>
-			<item value="ManyToMany"/>
-			<item value="OneToMany"/>
-			<item value="MyFirstHibernate"/>
-			<item value="MyJAR"/>
-			<item value="Demo"/>
 		</list>
 		<list key="artifactId">
-			<item value="MyFirstSpringProject"/>
-			<item value="InheritanceJoinedTable"/>
-			<item value="InheritanceSingleTable"/>
-			<item value="ItemCartCrud"/>
-			<item value="EmpProjCrud"/>
-			<item value="ManyToMany"/>
-			<item value="OneToMany"/>
-			<item value="MyFirstHibernate"/>
-			<item value="MyJAR"/>
-			<item value="Demo"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

@@ -1,0 +1,27 @@
+package com.demo.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.demo.beans.Order;
+import com.demo.beans.Product;
+
+public class Test {
+
+	public static void main(String[] args) {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
+		Product p =(Product) ctx.getBean("p1");
+		Product pp =(Product) ctx.getBean("p2");
+		Product ppp =(Product) ctx.getBean("p3");
+		Product pppp =(Product) ctx.getBean("p4");
+		Order o =(Order) ctx.getBean("o1");
+//		System.out.println(p);
+//		System.out.println(pp);
+//		System.out.println(ppp);
+//		System.out.println(pppp);
+		System.out.println(o);
+		((ClassPathXmlApplicationContext) ctx).close();
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.demo.beans;
+
+public class Address {
+	private String  addr;
+
+	public Address() {
+		super();
+	}
+
+	public Address(String addr) {
+		super();
+		this.addr = addr;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addr=" + addr + "]";
+	}
+	
+}

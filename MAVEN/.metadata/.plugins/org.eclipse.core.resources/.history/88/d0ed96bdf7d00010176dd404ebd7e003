@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+https://www.springframework.org/schema/context/spring-context.xsd">
+<bean id="placeholder" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer.class">
+	<property name="location" value="data.properties"></property>
+
+</bean>
+
+<bean id="p1" class="com.demo.beans.Product">
+	<property name="pid" value="1"></property>
+	<property name="pname" value="Kunal's Liver"></property>
+	<property name="qty" value="1"></property>
+	<property name="price" value="200"></property>
+	<property name="addr" ref="a1"></property>
+</bean>
+
+<bean id="p2" class="com.demo.beans.Product">
+	<property name="pid" value="2"></property>
+	<property name="pname" value="Kunal's Kidneys"></property>
+	<property name="qty" value="2"></property>
+	<property name="price" value="200"></property>
+	<property name="addr" ref="a1"></property>
+</bean>
+
+<bean id="p3" class="com.demo.beans.Product">
+	<constructor-arg index="0"  value="2"></constructor-arg>
+	<constructor-arg index="1"   value="Kunal's Kidneys"></constructor-arg>
+	<constructor-arg index="2"  value="2"></constructor-arg>
+	<constructor-arg index="3"  value="200"></constructor-arg>
+	<constructor-arg index="4" ref="a1"></constructor-arg>
+</bean>
+<bean id="a1" class="com.demo.beans.Address">
+	<property name="addr" value="Galli no.2, Cappa no.4"></property>
+</bean>
+</beans>

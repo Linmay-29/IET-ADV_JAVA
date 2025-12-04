@@ -1,0 +1,66 @@
+package com.demo.beans;
+
+import java.util.List;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Order implements BeanNameAware,BeanFactoryAware,InitializingBean,DisposableBean{
+	@Override
+	public String toString() {
+		return "Order [oid=" + oid + ", plist=" + plist + "]";
+	}
+	public int getOid() {
+		return oid;
+	}
+	public void setOid(int oid) {
+		this.oid = oid;
+	}
+	public List<Product> getPlist() {
+		return plist;
+	}
+	public void setPlist(List<Product> plist) {
+		this.plist = plist;
+	}
+	private int oid;
+	private List<Product> plist;
+	public Order() {
+		super();
+	}
+	public Order(int oid, List<Product> plist) {
+		super();
+		this.oid = oid;
+		this.plist = plist;
+	}
+	
+	@Override
+	public void setBeanName(String name) {
+		System.out.println("In setBeanName ");
+		
+	}
+	
+	@Override
+	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void destroy() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}
