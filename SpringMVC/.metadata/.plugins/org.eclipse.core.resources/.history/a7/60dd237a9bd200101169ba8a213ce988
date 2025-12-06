@@ -1,0 +1,33 @@
+package com.demo.controller;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.demo.beans.Product;
+import com.demo.beans.User;
+import com.demo.service.ProductService;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
+	
+	@Autowired
+	ProductService pservice;
+	
+	@GetMapping("/showproduct")
+	public ModelAndView showProducts(HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		if(u!=null) {
+			List<Product> plist = pservice.getProducts();
+			return new ModelAndView("showproduct","plist",plist);
+		}
+		
+		return  new ModelAndView("loginpage","message","Ithe direct kasa ala tu login kr bhadya");
+	}
+}

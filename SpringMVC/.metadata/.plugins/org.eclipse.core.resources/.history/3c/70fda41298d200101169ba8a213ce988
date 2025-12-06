@@ -1,0 +1,20 @@
+package com.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.demo.beans.Product;
+import com.demo.dao.ProductDao;
+
+public class ProductServiceImpl implements ProductService{
+
+	@Autowired
+	ProductDao pdao;
+	@Override
+	public List<Product> getProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,56 @@
+package com.demo.controller;
+import java.util.List;
+
+import javax.annotation.processing.Generated;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.demo.beans.Product;
+import com.demo.beans.User;
+import com.demo.service.ProductService;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
+	
+	@Autowired
+	ProductService pservice;
+	
+	@GetMapping("/showproduct")
+	public ModelAndView showProducts(HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		if(u!=null) {
+			List<Product> plist = pservice.getProducts();
+			System.out.println(plist);
+			return new ModelAndView("showproduct","plist",plist);
+		}
+		
+		return  new ModelAndView("loginpage","message","Ithe direct kasa ala tu login kr bhadya");
+	}
+	@GetMapping("/addproduct")
+	public ModelAndView addProduct(HttpSession session,Model myModel) {
+		User u = (User) session.getAttribute("user");
+		if(u!=null) {
+			myModel.addAttribute("p1",new Product());
+			return new ModelAndView("addproducts");
+		}else {
+			return new ModelAndView("showproduct","message","Ithe direct kasa ala tu login kr bhadya");
+		}
+	}
+	@GetMapping("/insertproduct")
+	public ModelAndView insertProduct(@ModelAttribute Product p ) {
+		boolean status = pservice.addProduct(p);
+		if(status) {
+			return new ModelAndView("showproduct");
+		}else {
+			return new ModelAndView("showproduct","message","Unable to add");
+		}
+	}
+}
