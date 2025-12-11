@@ -16,7 +16,7 @@ import com.demo.SpringBootMVCBookStoreCRUD.beans.Book;
 import com.demo.SpringBootMVCBookStoreCRUD.service.BookService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/books")
 public class BookController {
 	
 	@Autowired
@@ -37,13 +37,13 @@ public class BookController {
 	@PostMapping("/insertbook")
 	public ModelAndView insertBook(@ModelAttribute Book book) {
 		bservice.add(book);
-		return new ModelAndView("redirect:/display");
+		return new ModelAndView("redirect:/books/display");
 	}
 	
 	@GetMapping("deletebook/{bid}")
 	public ModelAndView delete(@PathVariable int bid) {
 		bservice.delete(bid);
-		return new ModelAndView("redirect:/display");
+		return new ModelAndView("redirect:/books/display");
 	}
 	
 	@GetMapping("update/{bid}")
@@ -59,7 +59,7 @@ public class BookController {
 	@PostMapping("/updatebook")
 	public ModelAndView update(@ModelAttribute Book book) {
 		bservice.update(book);
-		return null;
+		return new ModelAndView("redirect:/books/display");
 	}
 	
 	
